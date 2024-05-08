@@ -12,8 +12,10 @@ import { Formik, Form } from "formik";
 import { object, string } from "yup";
 import useApiRequest from "../services/useApiRequest";
 
+
 const Login = () => {
-const{login}=useApiRequest()
+  const { login } = useApiRequest();
+  
 
   const loginSchema = object({
     email: string().email().required(),
@@ -24,12 +26,13 @@ const{login}=useApiRequest()
       .matches(
         /[a-z]/,
         "The password needs both uppercase and lowercase letters."
-      ).matches(
+      )
+      .matches(
         /[A-Z]/,
         "The password needs both uppercase and lowercase letters."
-      ),
+      ).matches(/[!/[@$!%*?&]+/, "Password must contains a special character"),
   });
- 
+
   return (
     <Container maxWidth="lg">
       <Grid
@@ -107,13 +110,13 @@ const{login}=useApiRequest()
                     Submit
                   </Button>
                 </Box>
-
-                <Box sx={{ textAlign: "center", mt: 2 }}>
-                  <Link to="/register">Do you have not an account?</Link>
-                </Box>
               </Form>
             )}
           </Formik>
+
+          <Box sx={{ textAlign: "center", mt: 2 }}>
+            <Link to="/register">Do you have not an account?</Link>
+          </Box>
         </Grid>
 
         <Grid item xs={10} sm={7} md={6}>
