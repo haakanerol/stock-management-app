@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   firms: [],
+  brands: [],
   loading: false,
   error: false,
 };
@@ -13,9 +14,13 @@ const stockSlice = createSlice({
     fetchStart: (state) => {
       state.loading = true;
     },
-    stockSuccess: (state, { payload }) => {
+    firmsSuccess: (state, { payload }) => {
       state.loading = false;
       state.firms = payload;
+    },
+    brandsSuccess: (state, { payload }) => {
+      state.loading = false;
+      state.brands = payload;
     },
     fetchFail: (state) => {
       state.loading = false;
@@ -24,6 +29,6 @@ const stockSlice = createSlice({
   },
 });
 
-export const { fetchStart, stockSuccess, fetchFail } = stockSlice.actions;
+export const { fetchStart, firmsSuccess,brandsSuccess, fetchFail } = stockSlice.actions;
 
 export default stockSlice.reducer;
