@@ -7,17 +7,17 @@ import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 
 const Firms = () => {
-  const { getFirms } = useStockRequest();
+  const { getStock } = useStockRequest();
   const { firms } = useSelector((state) => state.stock);
 
   useEffect(() => {
-    getFirms();
+    getStock("firms");
     // eslint-disable-next-line
   }, []);
   // console.log(firms);
   return (
     <Box>
-      <Typography color="red" variant="h4">
+      <Typography color="red" variant="h4"mb={1}>
         Firms
       </Typography>
       <Button variant="contained">New Firm</Button>

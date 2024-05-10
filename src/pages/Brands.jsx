@@ -7,11 +7,11 @@ import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
 
 const Brands = () => {
-  const { getBrands } = useStockRequest();
+  const { getStock } = useStockRequest();
   const { brands } = useSelector((state) => state.stock);
 
   useEffect(() => {
-    getBrands();
+    getStock("brands");
     // eslint-disable-next-line
   }, []);
   

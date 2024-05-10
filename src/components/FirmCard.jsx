@@ -6,8 +6,11 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import useStockRequest from "../services/useStockRequest";
 
-export default function FirmCard({ name, image, address, phone }) {
+export default function FirmCard({ name, image, address, phone,_id}) {
+
+  const {deleteStock}= useStockRequest()
   return (
     <Card sx={{ maxWidth: 340, margin: "8px" }}>
       <Typography variant="h5" component="div" textAlign="center" mt="20px">
@@ -35,7 +38,7 @@ export default function FirmCard({ name, image, address, phone }) {
       <CardActions
         sx={{ display: "flex", flexDirection: "row", justifyContent: "center" }}
       >
-        <Button size="small">
+        <Button size="small" onClick={()=>deleteStock("firms",_id)}>
           <DeleteIcon />
         </Button>
         <Button size="small">
