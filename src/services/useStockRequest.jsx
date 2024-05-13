@@ -39,7 +39,7 @@ const useStockRequest = () => {
     try {
      await axiosToken.post(`/${path}/`,info);
      getStock(path);
-     toastSuccessNotify("Firm Added");
+     toastSuccessNotify(`${path} Added`);
     } catch (error) {
       dispatch(fetchFail());
       toastErrorNotify("Something went wrong")
