@@ -31,7 +31,7 @@ const Brands = () => {
 
   return (
     <div>
-      <Typography color="red" variant="h4">
+      <Typography color="red" variant="h4" mb={1}>
         Brands
       </Typography>
       <Button variant="contained" onClick={handleOpen}>

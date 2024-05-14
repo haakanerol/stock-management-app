@@ -20,6 +20,7 @@ const stockSlice = createSlice({
     },
     getStockSuccess:(state,{payload:{path,stockData}})=>{
       state.loading=false
+      state.error = false;
       state[path]=stockData
     },
     
