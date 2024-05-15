@@ -20,7 +20,7 @@ const Products = () => {
     getStock("categories");
     getStock("brands");
     // eslint-disable-next-line
-  });
+  },[]);
   return (
     <div>
       <Typography color="red" variant="h4" mb={1}>

@@ -6,7 +6,7 @@ import useStockRequest from "../services/useStockRequest";
 
 export default function ProductsTable() {
   const { products } = useSelector((state) => state.stock);
-  const {deleteStock}= useStockRequest()
+  const { deleteStock } = useStockRequest();
 
   const getRowId = (row) => row._id;
 
@@ -50,12 +50,11 @@ export default function ProductsTable() {
       type: "actions",
       headerName: "Operations",
       getActions: (props) => {
-        
         return [
           <GridActionsCellItem
             icon={<DeleteForeverIcon />}
             label="Delete"
-            onClick={()=>deleteStock("products",props.id)}
+            onClick={() => deleteStock("products", props.id)}
             key={props.id}
           />,
         ];
@@ -66,11 +65,10 @@ export default function ProductsTable() {
   return (
     <Box sx={{ width: "100%", marginTop: 2 }}>
       <DataGrid
-      
         autoHeight
         rows={products}
         columns={columns}
-        pageSizeOptions={[5,25,50,100]}
+        pageSizeOptions={[5, 25, 50, 100]}
         checkboxSelection
         disableRowSelectionOnClick
         getRowId={getRowId}
