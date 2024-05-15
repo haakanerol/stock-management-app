@@ -5,46 +5,33 @@ import EditIcon from "@mui/icons-material/Edit";
 import { useSelector } from "react-redux";
 import useStockRequest from "../services/useStockRequest";
 
-export default function PurchasesTable({ info, setInfo,handleOpen }) {
-  const { purchases } = useSelector((state) => state.stock);
+export default function SalesTable({ info, setInfo, handleOpen }) {
+  const { sales } = useSelector((state) => state.stock);
 
   const { deleteStock } = useStockRequest();
 
   const handleEdit = (row) => {
     console.log(row);
-    const { _id, firmId, brandId, productId, price, quantity } = row;
+    const { _id, brandId, productId, price, quantity } = row;
     setInfo({
       ...info,
       _id,
-      firmId: firmId._id,
       brandId: brandId._id,
       productId: productId._id,
       price,
       quantity,
     });
-    handleOpen()
-    
+    handleOpen();
   };
-
+  //  console.log(info);
   const getRowId = (row) => row._id;
 
   const columns = [
     { field: "updatedAt", headerName: "Date", minWidth: 150, flex: 1.3 },
-    {
-      field: "firmId",
-      headerName: "Firms",
-      minWidth: 130,
-      flex: 1,
-      //   editable: true,
-      //   valueGetter: (value) => value?.name,
-      valueGetter: (value, row) => {
-        // console.log("ROW:", row, "Value:",value)
-        return row.firmId.name;
-      },
-    },
+
     {
       field: "brandId",
-      headerName: "Brands",
+      headerName: "Brand",
       minWidth: 120,
       flex: 1,
       //   editable: true,
@@ -52,7 +39,7 @@ export default function PurchasesTable({ info, setInfo,handleOpen }) {
     },
     {
       field: "productId",
-      headerName: "Products",
+      headerName: "Product",
       minWidth: 120,
       flex: 1,
       //   editable: true,
@@ -104,7 +91,7 @@ export default function PurchasesTable({ info, setInfo,handleOpen }) {
           <GridActionsCellItem
             icon={<DeleteForeverIcon />}
             label="Delete"
-            onClick={() => deleteStock("purchases", props.id)}
+            onClick={() => deleteStock("sales", props.id)}
             key={props.id}
           />,
         ];
@@ -116,7 +103,7 @@ export default function PurchasesTable({ info, setInfo,handleOpen }) {
     <Box sx={{ width: "100%", marginTop: 2 }}>
       <DataGrid
         autoHeight
-        rows={purchases}
+        rows={sales}
         columns={columns}
         pageSizeOptions={[5, 25, 50, 100]}
         checkboxSelection

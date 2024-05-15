@@ -14,8 +14,8 @@ const Purchases = () => {
     firmId: "",
     brandId: "",
     productId: "",
-    quantity: null,
-    price: null,
+    quantity: "",
+    price: "",
   };
   const [info, setInfo] = useState(initialState);
   const handleOpen = () => {
@@ -43,7 +43,7 @@ const Purchases = () => {
         New Purchase
       </Button>
 
-      <PurchasesTable info={info} setInfo={setInfo} />
+      <PurchasesTable info={info} setInfo={setInfo} handleOpen={handleOpen}/>
 
       <PurchaseModal
         open={open}

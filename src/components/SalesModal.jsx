@@ -21,12 +21,12 @@ const style = {
   p: 4,
 };
 
-export default function PurchaseModal({ open, handleClose, setInfo, info }) {
-  const { firms, brands, products } = useSelector((state) => state.stock);
+export default function SalesModal({ open, handleClose, setInfo, info }) {
+  const { brands, products } = useSelector((state) => state.stock);
 
-//   console.log(firms, brands, products);
+  //   console.log( brands, products);
 
-  const { postStock,putStock } = useStockRequest();
+  const { postStock, putStock } = useStockRequest();
 
   const handleChange = (e) => {
     setInfo({ ...info, [e.target.name]: e.target.value });
@@ -34,10 +34,10 @@ export default function PurchaseModal({ open, handleClose, setInfo, info }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(info._id){
-      putStock("purchases",info)
-    }else{
-      postStock("purchases", info);
+    if (info._id) {
+      putStock("sales", info);
+    } else {
+      postStock("sales", info);
     }
     handleClose();
   };
@@ -56,25 +56,6 @@ export default function PurchaseModal({ open, handleClose, setInfo, info }) {
             component={"form"}
             onSubmit={handleSubmit}
           >
-           
-            <FormControl fullWidth>
-              <InputLabel id="firmId">Firm</InputLabel>
-              <Select
-                labelId="firmId"
-                id="firmId"
-                name='firmId'
-                value={info.firmId}
-                label="firms"
-                onChange={handleChange}
-                required
-              >
-                {firms.map((item) => (
-                  <MenuItem key={item._id} value={item._id}>
-                    {item.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
             <FormControl fullWidth>
               <InputLabel id="brandId">Brand</InputLabel>
               <Select
@@ -134,7 +115,7 @@ export default function PurchaseModal({ open, handleClose, setInfo, info }) {
             />
 
             <Button variant="contained" type="submit">
-             {info._id?"Update Purchase":"Add New Purchase"} 
+              {info._id ? "Update Sale" : "Add New Sale"}
             </Button>
           </Box>
         </Box>
