@@ -6,7 +6,7 @@ import PurchasesTable from "../components/PurchasesTable";
 import PurchaseModal from "../components/PurchaseModal";
 
 const Purchases = () => {
-  const { getStock } = useStockRequest();
+  const { getStockForPurch } = useStockRequest();
 
   const [open, setOpen] = useState(false);
 
@@ -27,10 +27,11 @@ const Purchases = () => {
   };
 
   useEffect(() => {
-    getStock("purchases");
-    getStock("firms");
-    getStock("brands");
-    getStock("products");
+    // getStock("purchases");
+    // getStock("firms");
+    // getStock("brands");
+    // getStock("products");
+    getStockForPurch();
     // eslint-disable-next-line
   }, []);
 

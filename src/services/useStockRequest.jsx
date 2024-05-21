@@ -3,6 +3,7 @@ import useAxios from "./useAxios";
 import {
   fetchFail,
   fetchStart,
+  getStockForPurchSuccess,
   getStockSuccess,
 } from "../features/stockSlice";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
@@ -83,8 +84,27 @@ const useStockRequest = () => {
   //     console.log(error);
   //   }
   // };
+  const getStockForPurch = async () => {
+    dispatch(fetchStart());
+    try {
+      const[prod,purch,bra,fir]=await Promise.all([
+         axiosToken("/products"),
+         axiosToken("/purchases"),
+         axiosToken("/brands"),
+         axiosToken("/firms"),
+      ])
+      const products=prod?.data?.data
+      const purchases=purch?.data?.data
+      const brands=bra?.data?.data
+      const firms=fir?.data?.data
+      dispatch(getStockForPurchSuccess({products,purchases,brands,firms}))
+    } catch (error) {
+      dispatch(fetchFail());
+      console.log(error);
+    }
+  };
 
-  return { getStock,deleteStock,postStock,putStock };
+  return { getStock,deleteStock,postStock,putStock,getStockForPurch };
 };
 
 export default useStockRequest;
