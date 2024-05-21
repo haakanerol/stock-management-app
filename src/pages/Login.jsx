@@ -3,7 +3,7 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import LockIcon from "@mui/icons-material/Lock";
-import image from "../assets/result.svg";
+// import image from "../assets/result.svg";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -11,6 +11,7 @@ import { Button } from "@mui/material";
 import { Formik, Form } from "formik";
 import { object, string } from "yup";
 import useApiRequest from "../services/useApiRequest";
+import img from "../assets/image.jpeg"
 
 
 const Login = () => {
@@ -120,8 +121,8 @@ const Login = () => {
         </Grid>
 
         <Grid item xs={10} sm={7} md={6}>
-          <Container>
-            <img src={image} alt="img" />
+          <Container  >
+            <img src={img} alt="img" width={450}  />
           </Container>
         </Grid>
       </Grid>
