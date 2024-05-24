@@ -14,10 +14,10 @@ import useApiRequest from "../services/useApiRequest";
 import img from "../assets/image.jpeg"
 
 
+
 const Login = () => {
   const { login } = useApiRequest();
   
-
   const loginSchema = object({
     email: string().email().required(),
     password: string()
@@ -35,7 +35,7 @@ const Login = () => {
   });
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" >
       <Grid
         container
         justifyContent="center"
@@ -46,8 +46,8 @@ const Login = () => {
         }}
       >
         <Grid item xs={12} mb={3}>
-          <Typography variant="h3" color="primary" align="center">
-            STOCK APP
+          <Typography variant="h3" color="secondary" align="center" mt={15}>
+            STOCK MANAGEMENT APP
           </Typography>
         </Grid>
 
@@ -96,7 +96,7 @@ const Login = () => {
                     helperText={errors.email}
                   />
                   <TextField
-                    label="password"
+                    label="Password"
                     name="password"
                     id="password"
                     type="password"
@@ -116,13 +116,13 @@ const Login = () => {
           </Formik>
 
           <Box sx={{ textAlign: "center", mt: 2 }}>
-            <Link to="/register">Do you have not an account?</Link>
+            <Link to="/register" >Do you have not an account?</Link>
           </Box>
         </Grid>
 
         <Grid item xs={10} sm={7} md={6}>
           <Container  >
-            <img src={img} alt="img" width={450}  />
+            <img src={img} alt="img" width={550}  />
           </Container>
         </Grid>
       </Grid>
